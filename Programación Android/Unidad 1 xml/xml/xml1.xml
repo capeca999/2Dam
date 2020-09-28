@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<Pedido>
+    <Destinatario>
+    Juan Delgado Martínez
+    </Destinatario>
+    <Articulo codigo="A2023"></Articulo>
+    <Direccion>
+    <Calle>Calle Barco</Calle>
+    <Numero>4</Numero>
+    <Otro> Tercer Piso, Letra A</Otro>
+    </Direccion>
+<fecha_entrega> 19-5-2000 </fecha_entrega>
+</Pedido>

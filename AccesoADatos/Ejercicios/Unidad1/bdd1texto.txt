@@ -1,0 +1,28 @@
+1º Select
+   alumnos.numexp,
+   alumnos.nombre,
+   notas.nota 
+from
+alumnos, asignaturas, notas
+where
+   alumnos.numexp = notas.numexp 
+   and asignaturas.codasig = notas.codasig
+
+
+
+2º Select alumnos.edad, alumnos.peso from alumnos where alumnos.nombre='null' and tlf like "96%" and tlf like "%5_%"
+
+
+3º
+
+Select alumnos.nombre from alumnos where alumnos.numexp = (SELECT min(alumnos.numexp)from alumnos) 
+
+4º
+
+select alumnos.numexp, alumnos.nombre, count(alumnos.numexp) as asignaturas_del_alumno from alumnos LEFT JOIN notas on (alumnos.numexp = notas.numexp) GROUP BY notas.numexp 
+
+5º
+
+
+
+Select DISTINCT asignaturas.descripcion from asignaturas join notas on asignaturas.codasig = notas.codasig join alumnos on notas.numexp = alumnos.numexp WHERE notas.nota > 9 

@@ -1,0 +1,29 @@
+<xs:schema
+La raiz, espacio de nombres
+
+<xs:element
+Definir elementos
+
+Tenemos que poner una palabra despues del espacio de nombres
+
+xmlns:nombre="link"
+
+
+xsi:noNamespaceSchemaLocation="esquema.xsd">
+
+
+
+
+<xs:element name="libro">
+<xsd:complexType>
+<xsd:attribute name="formato">
+type="xsd:string" use="required"/>
+</xsd:complexType>
+</xs:element>
+
+
+<xsd:sequence>
+<xsd:element>
+<xsd:element>
+
+<xsd:choice>

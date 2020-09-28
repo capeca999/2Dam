@@ -1,0 +1,96 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package javaapplication2;
+
+import java.io.BufferedReader;
+import java.io.IOException; 
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.Scanner;
+/**
+ *
+ * @author 2dam
+ */
+public class JavaApplication2 {
+
+    /**
+     * @param args the command line arguments
+     */
+   public static void main(String[] args) throws IOException, InterruptedException {
+   
+       boolean fin = false;
+       int contador=0;
+       int longitudexe=0;
+          // Creates an object of Scanner
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Pon la ruta de un exe: ");
+
+        // Takes input from the keyboard
+        String name = input.nextLine();
+       
+     
+               int length = name.length();
+       
+       name = name.replace("\\", "/");
+
+     
+       
+       while(fin==false){
+
+          if(  name.charAt((length-1)-contador)== '/' ){
+              longitudexe=contador;
+              fin=true;
+          }
+          else{
+              contador++;
+          }
+           
+       }
+       
+       String nombreExe= name.substring(name.length()-longitudexe);
+       
+       
+       Runtime.getRuntime().exec(nombreExe);
+           Runtime.getRuntime().exec(nombreExe).waitFor();
+    while (siguefuncionando(nombreExe)) {
+        Thread.sleep(1000); // make this smaller if you want
+    }
+    System.out.println("El Programa se ha cerrado correctamente");
+        
+        
+        
+        
+ 
+   }
+   
+   
+           private static boolean siguefuncionando(String nombreProceso) throws IOException {
+               
+    String taskList = System.getenv("windir") + "\\system32\\tasklist.exe";
+    InputStream is = Runtime.getRuntime().exec(taskList).getInputStream();
+
+    try (BufferedReader br = new BufferedReader(new InputStreamReader(is))) {
+        return br
+            .lines()
+            .anyMatch(line -> line.contains(nombreProceso));
+    }
+        
+        
+        
+        
+        
+        
+        
+}  
+   
+}
+
+
+       
+       
+       
